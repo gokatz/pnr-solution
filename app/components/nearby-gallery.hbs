@@ -1,0 +1,11 @@
+{{yield}}
+<div>
+  <ul>
+    {{#each this.nearbyParks as |park| }}
+    <li>
+      <img src={{park.url}} alt={{park.name}} />
+      <span>{{park.name}}</span>
+    </li>
+    {{/each}}
+  </ul>
+</div>
