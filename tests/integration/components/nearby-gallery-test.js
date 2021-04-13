@@ -9,18 +9,7 @@ module('Integration | Component | nearby-gallery', function(hooks) {
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
-
     await render(hbs`<NearbyGallery />`);
-
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <NearbyGallery>
-        template block text
-      </NearbyGallery>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom('[data-test=nearby-gallery]').exists('NearbyGallery renders');
   });
 });
