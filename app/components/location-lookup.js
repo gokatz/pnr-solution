@@ -5,18 +5,16 @@ import { action } from '@ember/object';
 export default class LocationLookupComponent extends Component {
   @tracked lat;
   @tracked long;
+  @tracked showLayout = false;
 
   @action
   done(args) {
-    console.log('Done:', args);
+    this.showLayout = true;
   }
 
   @action
   placeChanged(args) {
     this.lat = args.geometry.viewport.La.g;
     this.long = args.geometry.viewport.Ta.g;
-
-    console.log(this.lat);
-    console.log(this.long);
   }
 }
