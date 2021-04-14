@@ -1,7 +1,11 @@
 {{yield}}
 
-<div class="location-lookup">
+{{#if this.lat }}
+<Layout @lat={{this.lat}} @long={{this.long}}/>
 
+{{else}}
+
+<div class="location-lookup">
 
     <p id="message">{{message}}</p>
     <p>Address: {{model.address}}</p>
@@ -13,3 +17,5 @@
     <button>Submit</button>
 
 </div>
+
+{{/if}}
