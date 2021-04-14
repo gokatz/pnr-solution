@@ -1,6 +1,6 @@
 {{yield}}
 
-{{#if this.lat }}
+{{#if this.showLayout }}
 <Layout @lat={{this.lat}} @long={{this.long}}/>
 
 {{else}}
@@ -14,7 +14,7 @@
             @onBlurCallback={{action "done" }} @placeChangedCallback={{action "placeChanged" }}
             @placeholder="Custom placeholder" @preventSubmit={{true}} />
     </div>
-    <button>Submit</button>
+    <button onclick={{action "done"}}>Submit</button>
 
 </div>
 
