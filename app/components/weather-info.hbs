@@ -1,0 +1,17 @@
+{{yield}}
+<div class="weather-app">
+    <input class="search" value={{location}} oninput={{action updateQuery}}>
+    <button class="button" onclick={{action updateLocation}}>Search</button>
+
+    <div class="output">
+        <h2>{{name}}</h2>
+        <h3>{{weather}}</h3>
+
+        <b>Actual Temperature: {{this.temperature}}</b>
+        <br><b>Feels Like: </b> {{this.feelsLike}}
+
+        <br>MAX: {{this.tempMax}} MIN:{{this.tempMin}}
+
+    </div>
+    
+</div>
