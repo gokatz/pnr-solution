@@ -47,5 +47,14 @@ module.exports = function (environment) {
     // here you can enable a production-specific feature
   }
 
+  ENV['place-autocomplete'] = {
+    exclude: true,
+    key: 'AIzaSyC8KJV3tzLJVXAZNlW0Xy1IyWNyWHdS3m8',
+    client: 'gme-myclientid',
+    version: 3.27, // Optional - if client is set version must be above 3.24
+    language: 'en', // Optional - be default will be based on your browser language
+    region: 'GB', // Optional
+  };
+
   return ENV;
 };
