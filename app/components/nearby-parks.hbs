@@ -1,2 +1,14 @@
 {{yield}}
+{{!-- distance, name, description, hours, ratings, distance/direction from current loaction --}}
 <div id = "map"></div>
+{{#each this.parks as |park index|}}
+    <div id = "result {{index}}">
+        <img src = "{{park.icon}}" alt = "Image of {{park.name}}"> <h4>{{park.name}}</h4>
+        <h5>{{park.vicinity}}</h5>
+        <h5>{{park.geometry.viewport.La.g}}</h5>
+        <h5>{{park.geometry.viewport.Ua.g}}</h5>
+        
+        <h5>{{park.rating}}</h5>
+        <h5>{{park.user_ratings_total}}</h5>
+    </div>
+{{/each}}

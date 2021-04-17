@@ -7,4 +7,5 @@ export default class BaseComponentComponent extends Component {
 
     @tracked latitude = 40.631010;
     @tracked longitude = -74.149410;
+
 }
