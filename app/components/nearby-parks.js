@@ -44,7 +44,6 @@ export default class NearbyParksComponent extends Component {
                     }
                 }
             });
-            console.log(this.parks);
         });
     }
 
