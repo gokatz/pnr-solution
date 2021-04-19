@@ -1,16 +1,90 @@
 import Component from '@glimmer/component';
 import { tracked } from "@glimmer/tracking";
-import { action, set } from '@ember/object';
+import { action, set, get } from '@ember/object';
 import { getGoogleMap } from '../helpers/get-google-map';
 import { A } from '@ember/array';
 
+//issues I have to solve urgently
+/**
+ * 1) Get the google embedded map to function (idea: make a child component exclusively for
+ * the embedded map, and to that component pass the name of the place, will parse in the child js file)
+ * 2) Make the dropdown list not expand the div; make it so that it overlaps elements/goes over
+ *  elements below it, not push them
+ * 3) Get more creative with how the syling (later on)
+ */
+
 export default class NearbyParksComponent extends Component {
 
-    @tracked parks = A([]);
+    @tracked parks = A([]);  //used to store the results of the search
+    @tracked selected_place = "";  //utilized for the currently selected result in this component
+    @tracked selected_index = 0;  //utilized for the carousel/slides for the results
+    @tracked selected_icon;  //google icon of what the location is
+    @tracked selected_latitude;  //used for calculating the current distance
+    @tracked selected_longitude;  //used for calculating the current distance
+    @tracked selected_vicinity = " ";  //address of selected location
+    @tracked selected_rating;  //rating score of selected location
+    @tracked selected_user_ratings;  //number of ratings of the selection
 
+    @tracked isSelecting = false;
+    @tracked isSelected = false;
+    @tracked isGoogleMapPop = false;
+
+    //actions that act as switches
+    @action
+    toggleChoices() {
+        if(this.isSelecting == false) {
+            this.isSelecting = true;
+        }
+        else {
+            this.isSelecting = false
+        }
+    }
+
+    @action
+    viewEmbeddedMap() {
+        if(this.isSelected == true) {
+            this.isGoogleMapPop = true
+        }
+    }
+
+    @action
+    closeEmbeddedMap() {
+        this.isGoogleMapPop = false
+    }
+
+    //actions realted to the google query/embedded map
+    @action
+    updateGoogleLocation(search) {
+        this.selected_place = (search).replaceAll(' ', '+');
+    }
+
+    @action
+    currentSelection() {
+        return ((this.selected_place).replaceAll('+', ' '))
+    }
+
+    @action
+    queryMapSearch() {
+        return ((this.selected_place).replaceAll(' ', '+'))
+    }
+
+    //actions related to the results
     @action
     appendResult(result) {
         this.parks.pushObject(result);
+    }
+
+    @action
+    updateAllSelections(index) {
+        this.selected_place = get(this.parks.objectAt(index), 'name')
+        this.selected_icon = get(this.parks.objectAt(index), 'icon')
+        this.selected_latitude = get(this.parks.objectAt(index), 'geometry.viewport.Ua.g')
+        this.selected_longitude = get(this.parks.objectAt(index), 'geometry.viewport.La.g');
+        this.selected_vicinity = get(this.parks.objectAt(index), 'vicinity');
+        this.selected_rating = get(this.parks.objectAt(index), 'rating');
+        this.selected_user_ratings = get(this.parks.objectAt(index), 'user_ratings_total');
+        
+        this.isSelected = true
     }
 
     constructor() {
@@ -46,5 +120,4 @@ export default class NearbyParksComponent extends Component {
             });
         });
     }
-
 }
