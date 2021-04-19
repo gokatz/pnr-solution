@@ -1,10 +1,13 @@
 {{yield}}
 <h1>Parks and Recreation</h1>
 
-<<<<<<< HEAD
-<LocationLookup />
 <ShareToTwitterBtn />
-<NearbyGallery />
-=======
 <LocationLookup />
->>>>>>> 2ecf212255c4bb7276923f45f8e13bc7db2b3ddd
+<NearbyGallery />
+{{!-- The data passed to the NearbyParks component should be changed to however the user's
+latitude and longitude were obtained --}}
+<NearbyParks
+    @latitude = {{this.latitude}}
+    @longitude = {{this.longitude}}
+>
+

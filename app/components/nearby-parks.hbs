@@ -1,0 +1,45 @@
+{{yield}}
+<div id = "map" style = "opacity: 0"></div>
+<div local-class = "nearby_parks">
+    <button 
+        local-class="collapsible"
+        id="collapsible_list"
+        {{on "click" this.toggleChoices}}
+    >{{if this.selected_place this.selected_place "Make a selection!"}}
+    </button>
+    {{#if this.isSelecting}}
+    {{#each this.parks as |park index|}}
+    <div>
+        <button 
+            local-class = "collapsible_child"
+            {{on "click" (fn this.updateAllSelections index)}}
+            {{on "click" this.toggleChoices}}>
+            {{park.name}}
+        </button>
+    </div>
+    {{/each}} 
+    {{/if}}
+    <div local-class="parks-result">    
+        {{#if this.selected_place}}
+        <span>
+            <h4>{{this.selected_place}} 
+                <img src = "{{this.selected_icon}}" alt = "Icon for {{this.selected_place}}" local-class = "parks_icon">
+            </h4>
+        </span>
+        <p>{{this.selected_vicinity}}</p>
+        <p>Distance from location: {{coords-to-distance this.args.latitude this.args.longitude this.selected_latitude this.selected_longitude 'mi'}}</p>
+        <p>Rating: {{this.selected_rating}}</p>
+        <p>Total Reviews: {{this.selected_user_ratings}}</p>
+        {{/if}}
+    </div>
+    <button {{on "click" this.viewEmbeddedMap}}>Load Map</button>
+    {{#if this.isGoogleMapPop}}
+    <button {{on "click" this.closeEmbeddedMap}}>Close Map</button>
+        <div local-class="embedded_gmap">
+            <EmbeddedGoogleMap
+                @query = {{this.selected_place}}
+            >
+            </EmbeddedGoogleMap>
+        </div>
+    {{/if}}
+</div>
