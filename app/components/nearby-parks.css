@@ -1,3 +1,44 @@
+.active, .collapsible:hover, .collapsible_child:hover {
+    background-color: lightgrey;
+}
+
+.collapsible, .collapsible_child {
+    /* background-color: slateblue; */
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+}
+
+.embedded_gmap {
+    padding: 2px;
+    /* max-width: fit-content; */
+    width: auto;
+    height: auto;
+    border: 1px;
+}
+
+.map {
+    width: 66.7%;
+}
+
+.nearby_parks {
+    background-color: #f6f6f6;
+    /* padding: 15px; */
+    width: 33.3%;
+    /* margin-top: 20px;
+    margin-right: 10px;
+    margin-left: auto; */
+}
+
+.parks {
+    height: calc(100% - 55px);
+    width: 100%;
+    display: flex;
+}
 .parks_icon {
     height: 25px;
     width: 25px;
@@ -14,7 +55,7 @@
     width: 100%;
     height: auto;
     background-color: lightblue;
-    border: slateblue;
+    /* border: slateblue; */
     border-width: 2px;
     overflow: hidden;
     /* transition: max-height 5s ease-out; */
@@ -24,40 +65,8 @@
     background-color: lightsteelblue;
 }
 
-.collapsible, .collapsible_child {
-    background-color: slateblue;
-    color: black;
-    cursor: pointer;
-    padding: 10px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-}
-
-.active, .collapsible:hover, .collapsible_child:hover {
-    background-color: lightgrey;
-}
-
-.embedded_gmap {
-    padding: 2px;
-    /* max-width: fit-content; */
-    width: auto;
-    height: auto;
-    border: 1px;
-}
-
-.nearby_parks {
-    background-color: lightslategrey;
-    padding: 15px;
-    width: 33.3%;
-    margin-top: 20px;
-    margin-right: 10px;
-    margin-left: auto;
-}
-
-@media screen and (max-width: 650px) {
+/* @media screen and (max-width: 650px) {
     .nearby_parks {
         width: 28%;
     }
-}
+} */
