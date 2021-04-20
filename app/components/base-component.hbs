@@ -1,11 +1,6 @@
 {{yield}}
 <h1 class="title">Parks and Recreation</h1>
 
-<ShareToTwitterBtn />
-<LocationLookup />
-{{!-- <NearbyGallery /> --}}
+{{!-- <LocationLookup /> --}}
 {{!-- <Weather /> --}}
-<NearbyParks
-    @latitude = {{this.latitude}}
-    @longitude = {{this.longitude}}
-/>
+<NearbyParks @latitude={{this.latitude}} @longitude={{this.longitude}} />

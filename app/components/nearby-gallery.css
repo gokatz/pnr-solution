@@ -1,11 +1,15 @@
 .gallery-item {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
-  min-width: 200px;
+  width: 350px;
+  height: 350px;
 }
 
 .park-name {
   margin-top: 5px;
   text-align: center;
+}
+
+.park-img {
+  cursor: pointer;
 }

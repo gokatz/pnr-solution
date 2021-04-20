@@ -7,8 +7,8 @@
         </button> --}}
         {{!-- {{#if this.isSelecting}} --}}
         {{#each this.parks as |park index|}}
-            <ParkInfo @park={{park}} @index={{index}}  @onClick={{fn this.updateAllSelections index}}/>
-            {{!-- <div>
+        <ParkInfo @park={{park}} @index={{index}} @onClick={{fn this.updateAllSelections index}} />
+        {{!-- <div>
                 <button local-class="collapsible_child" {{on "click" (fn this.updateAllSelections index)}} {{on "click"
                     this.toggleChoices}}>
                     {{park.name}}
@@ -16,6 +16,9 @@
             </div> --}}
         {{/each}}
         {{!-- {{/if}} --}}
+        {{#if this.parks.length }}
+        <NearbyGallery @parks={{this.parks}} @selectPark={{this.updateAllSelections}} />
+        {{/if}}
         <div local-class="parks-result">
             {{#if this.selected_place}}
             <span>
