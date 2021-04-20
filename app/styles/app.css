@@ -1,3 +1,11 @@
 .test-place-autocomplete-container input {
   width: 300px;
 }
+
+h1 {
+  margin: 0;
+}
+body {
+  height: 100vh;
+  margin: 0;
+}
