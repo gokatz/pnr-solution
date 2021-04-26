@@ -15,22 +15,24 @@
                 </button>
             </div> --}}
         {{/each}}
+
         {{!-- {{/if}} --}}
         {{#if this.parks.length }}
         <NearbyGallery @parks={{this.parks}} @selectPark={{this.updateAllSelections}} />
         {{/if}}
         <div local-class="parks-result">
             {{#if this.selected_place}}
-            <span>
-                <h4>{{this.selected_place}}
-                    <img src="{{this.selected_icon}}" alt="Icon for {{this.selected_place}}" local-class="parks_icon">
-                </h4>
-            </span>
-            <p>{{this.selected_vicinity}}</p>
-            <p>Distance from location: {{coords-to-distance this.args.latitude this.args.longitude
-                this.selected_latitude this.selected_longitude 'mi'}}</p>
-            <p>Rating: {{this.selected_rating}}</p>
-            <p>Total Reviews: {{this.selected_user_ratings}}</p>
+              <SelectedPlace
+                @selected_place={{this.selected_place}}
+                @selected_vicinity={{this.selected_vicinity}}
+                @selected_latitude={{this.selected_latitude}}
+                @selected_longitude={{this.selected_longitude}}
+                @selected_rating={{this.selected_rating}}
+                @selected_user_ratings={{this.selected_user_ratings}}
+                @selected_icon={{this.selected_icon}}
+                @longitude={{this.longitude}}
+                @latitude={{this.latitude}}
+              />
             {{/if}}
         </div>
         {{!-- <button {{on "click" this.viewEmbeddedMap}}>Load Map</button> --}}

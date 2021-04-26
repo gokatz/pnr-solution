@@ -1,0 +1,20 @@
+<span {{did-update this.getWeatherData @selected_latitude @selected_longitude}}>
+    <h4>{{@selected_place}}
+        <img src="{{@selected_icon}}" alt="Icon for {{@selected_place}}" local-class="parks_icon">
+    </h4>
+</span>
+<p>{{@selected_vicinity}}</p>
+<p>Distance from location: {{coords-to-distance @latitude @longitude
+    @selected_latitude @selected_longitude 'mi'}}</p>
+
+<p>
+  Current Temperature:
+  {{#if this.isLoading}}
+    Fetching temperature...
+  {{else}}
+    {{this.temperature}}
+  {{/if}}
+</p>
+
+<p>Rating: {{@selected_rating}}</p>
+<p>Total Reviews: {{@selected_user_ratings}}</p>
